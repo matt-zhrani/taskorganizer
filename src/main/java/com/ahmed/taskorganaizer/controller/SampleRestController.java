@@ -24,7 +24,7 @@ public class SampleRestController {
         return "hello world!! restful call";
     }
 
-    @GetMapping("/tasks")
+   /* @GetMapping("/tasks")
     public  String allTasks(){
         return taskService.findAll().toString();
     }
@@ -41,5 +41,5 @@ public class SampleRestController {
 
         taskService.delete(id);
         return "task deleted";
-    }
+    }*/
 }

@@ -43,7 +43,7 @@
     <h3>My Tasks</h3>
     <hr>
     <div class="table-responsive">
-        <table class="table table-striped table-bordered">
+        <table class="table table-striped table-bordered text-left">
             <thead>
                 <tr>
                     <th>Id</th>
