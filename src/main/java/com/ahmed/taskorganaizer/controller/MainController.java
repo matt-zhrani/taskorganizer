@@ -4,12 +4,14 @@ import com.ahmed.taskorganaizer.model.Task;
 import com.ahmed.taskorganaizer.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 /**
  * Created by ahmed on 1/7/2017.
@@ -40,9 +42,10 @@ public class MainController {
     }
 
     @PostMapping("/save-task")
-    public String saveTask(@ModelAttribute Task task, HttpServletRequest request){
+    public String saveTask(@ModelAttribute Task task, BindingResult bindingResult, HttpServletRequest request){
+        task.setDateCreated(new Date());
         taskService.save(task);
-        request.setAttribute("task",taskService.findAll());
+        request.setAttribute("tasks",taskService.findAll());
         request.setAttribute("mode", "MODE_TASKS");
         return "index";
     }
@@ -57,8 +60,8 @@ public class MainController {
     @GetMapping("/delete-task")
     public String deleteTask(@RequestParam int id, HttpServletRequest request){
         taskService.delete(id);
-        request.setAttribute("task", taskService.findAll());
-        request.setAttribute("mode", "MODE_UPDATE");
+        request.setAttribute("tasks", taskService.findAll());
+        request.setAttribute("mode", "MODE_TASKS");
         return "index";
     }
 }
