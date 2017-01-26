@@ -47,7 +47,7 @@
             <hr>
 
             <div class="input-group .add-on">
-                <input class="form-control" placeholder="Search tasks" id="search" type="text">
+                <input class="form-control" onkeyup='filterTable()' placeholder="Search tasks" id="search" type="text">
                 <div class="input-group-btn">
                     <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                 </div>
